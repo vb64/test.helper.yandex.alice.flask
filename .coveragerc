@@ -1,0 +1,6 @@
+[run]
+branch = True
+source = tester_alice_skill_flask/
+
+[html]
+directory = htmlcov
