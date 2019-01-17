@@ -29,11 +29,11 @@ tests: flake8 lint coverage html
 dist:
 	$(PYTHON) setup.py sdist bdist_wheel
 
-upload_piptest: tests
-	$(PYTHON) setup.py sdist upload -r pypitest
+upload_piptest: tests dist
+	$(PYTHON) -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
-upload_pip: tests
-	$(PYTHON) setup.py sdist upload -r pypi
+upload_pip: tests dist
+	$(PYTHON) -m twine upload dist/*
 
 setup: setup_python setup_pip
 
