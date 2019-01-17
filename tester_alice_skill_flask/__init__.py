@@ -58,7 +58,7 @@ class Skill:
 
 class Session:
     """
-    Approved Alice skill
+    Alice session
     """
     def __init__(self, skill, user_id, interfaces, locale, timezone, client_id, command=""):
         self.skill = skill
