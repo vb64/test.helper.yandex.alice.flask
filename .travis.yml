@@ -8,4 +8,4 @@ install:
 - pip install -r tests/requirements.txt
 
 script:
-- make tests
+- python -m flake8 --max-line-length=110 tester_alice_skill_flask
