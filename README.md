@@ -1,6 +1,7 @@
 # test.helper.yandex.alice.flask
 
 [![Python 2.7.14 3.6.3 3.7-dev](https://img.shields.io/travis/vb64/test.helper.yandex.alice.flask.svg?label=Python%202.7%203.6%203.7&style=plastic)](https://travis-ci.org/vb64/test.helper.yandex.alice.flask)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/vb64/test.helper.yandex.alice.flask)
 
 Класс python для автоматического тестирования навыка Яндекс Алиса, реализованного на python/flask.
 
