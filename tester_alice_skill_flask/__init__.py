@@ -1,7 +1,12 @@
 """
 Helper for Yandex.Alice skill autotests
 """
+import sys
 import json
+
+if sys.version_info < (3, 0):
+    reload(sys)  # noqa: F821 pylint: disable=undefined-variable
+    sys.setdefaultencoding('utf-8')  # pylint: disable=no-member
 
 
 class Surface:
