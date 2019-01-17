@@ -1,9 +1,8 @@
 # test.helper.yandex.alice.flask
 
-[![Build Status](https://travis-ci.org/vb64/test.helper.yandex.alice.flask.svg?branch=master)](https://travis-ci.org/vb64/test.helper.yandex.alice.flask)
+[![Python 2.7.14 3.6.3 3.7-dev](https://travis-ci.org/vb64/test.helper.yandex.alice.flask.svg?branch=master)](https://travis-ci.org/vb64/test.helper.yandex.alice.flask)
 
 Класс python для автоматического тестирования навыка Яндекс Алиса, реализованного на python/flask.
-Тестировалось в 2.7.15 и 3.7.2
 
 Установка:
 ```
