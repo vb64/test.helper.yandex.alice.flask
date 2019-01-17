@@ -1,7 +1,11 @@
 language: python
 python:
   - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
   - "3.6"
+  - "3.7-dev"
 
 install:
 - pip install -r requirements.txt
@@ -9,3 +13,6 @@ install:
 
 script:
 - python -m flake8 --max-line-length=110 tester_alice_skill_flask
+- python -m pylint tester_alice_skill_flask
+- python -m coverage run tests/test_buy_elephant.py
+- python -m coverage report --skip-covered
