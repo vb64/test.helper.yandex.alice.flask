@@ -170,7 +170,7 @@ class Session:
         """
         for message_id in sorted(self.messages)[-tail:]:
             req, res = self.messages[message_id]
-            if substring in "{}\n{}".format(req, res):
+            if (substring in req) or (substring in res):
                 return True
 
         return False
