@@ -26,10 +26,20 @@ html:
 tests: flake8 lint coverage html
 	$(COVERAGE) report --skip-covered
 
+dist:
+	$(PYTHON) setup.py sdist bdist_wheel
+
+upload_piptest: tests
+	$(PYTHON) setup.py sdist upload -r pypitest
+
+upload_pip: tests
+	$(PYTHON) setup.py sdist upload -r pypi
+
 setup: setup_python setup_pip
 
 setup_pip:
 	$(PYTHON) -m pip install -r requirements.txt
+	$(PYTHON) -m pip install -r tests/requirements.txt
 
 setup_python:
 	python -m virtualenv venv

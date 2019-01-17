@@ -1,4 +1,1 @@
-Flask==0.12.2
-flake8
-pylint
-coverage
+Flask==0.12.3
