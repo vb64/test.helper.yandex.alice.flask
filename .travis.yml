@@ -11,4 +11,5 @@ install:
 script:
 - python -m flake8 --max-line-length=110 tester_alice_skill_flask
 - python -m coverage run tests/test_buy_elephant.py
+- python -m coveralls
 - python -m coverage report --skip-covered
