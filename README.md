@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/vb64/test.helper.yandex.alice.flask/badge.svg?branch=master)](https://coveralls.io/github/vb64/test.helper.yandex.alice.flask?branch=master)
 
 Класс python для автоматического тестирования навыка Яндекс Алиса, реализованного на python/flask.
+Пример [использования в юнит-тестах](https://github.com/vb64/test.helper.yandex.alice.flask/blob/master/tests/test_buy_elephant.py).
 
 Установка:
 ```
