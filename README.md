@@ -1,15 +1,11 @@
-# test.helper.yandex.alice.flask
-
-[![Python 2.7.14 3.6.3 3.7-dev](https://img.shields.io/travis/vb64/test.helper.yandex.alice.flask.svg?label=Python%202.7%203.6%203.7&style=plastic)](https://travis-ci.org/vb64/test.helper.yandex.alice.flask)
-[![Code Climate](https://img.shields.io/codeclimate/maintainability-percentage/vb64/test.helper.yandex.alice.flask.svg?label=Code%20Climate&style=plastic)](https://codeclimate.com/github/vb64/test.helper.yandex.alice.flask)
-[![Coverage Status](https://coveralls.io/repos/github/vb64/test.helper.yandex.alice.flask/badge.svg?branch=master)](https://coveralls.io/github/vb64/test.helper.yandex.alice.flask?branch=master)
+# Класс для автотестов навыка ЯндексАлисы
 
 Класс python для автоматического тестирования навыка Яндекс Алиса, реализованного на python/flask.
 Пример [использования в юнит-тестах](https://github.com/vb64/test.helper.yandex.alice.flask/blob/master/tests/test_buy_elephant.py).
 
 Установка:
-```
-$ pip install tester_alice_skill_flask
+```bash
+pip install tester_alice_skill_flask
 ```
 
 Использование:
@@ -37,18 +33,15 @@ session = skill.new_session(
 )
 
 # история диалога содержит подстроку
-session.contain("Купи слона!")
-True
+assert session.contain("Купи слона!")
 
 # диалог содержит две кнопки
-len(session.buttons)
-2
+assert len(session.buttons) == 2
 
 # нажать первую кнопку
 session.send_button(0)
 
-session.contain("Все говорят")
-True
+assert session.contain("Все говорят")
 
 # послать текст
 session.send("Отстань!", command="", nlu={"entities": [], "tokens": []})
@@ -73,10 +66,7 @@ session.clear()
 # купить слона
 session.send("ладно")
 
-session.contain("Слона можно найти на Яндекс.Маркете!")
-True
-
-session.contain("Все говорят")
-False
+assert session.contain("Слона можно найти на Яндекс.Маркете!")
+assert not session.contain("Все говорят")
 
 ```

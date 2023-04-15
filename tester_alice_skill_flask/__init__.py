@@ -1,18 +1,15 @@
-"""
-Helper for Yandex.Alice skill autotests
-"""
+"""Helper for Yandex.Alice skill autotests."""
 import sys
 import json
 
-if sys.version_info < (3, 0):
+if sys.version_info < (3, 0):  # pragma: no cover
     reload(sys)  # noqa: F821 pylint: disable=undefined-variable
     sys.setdefaultencoding('utf-8')  # pylint: disable=no-member
 
 
 class Surface:
-    """
-    Available Alice surfaces
-    """
+    """Available Alice surfaces."""
+
     Windows = 1
     MobileAndBrowser = 2
     Navigator = 3
@@ -20,19 +17,18 @@ class Surface:
 
 
 class Interface:
-    """
-    Available Alice interfaces
-    """
+    """Available Alice interfaces."""
+
     Screen = "screen"
 
 
 class Skill:
-    """
-    Approved Alice skill as flask app
-    """
+    """Approved Alice skill as flask app."""
+
     sessions = {"current_id": 10000}
 
     def __init__(self, flask_app, skill_id, webhook_url, is_screen_need=False):
+        """Create Alice skill."""
         self.app = flask_app
         self.app.config['TESTING'] = True
         self.client = self.app.test_client()
@@ -50,17 +46,15 @@ class Skill:
       client_id="ru.yandex.searchplugin/5.80 (Samsung Galaxy; Android 4.4)",
       command=""
     ):
-        """
-        create new Alice session
-        """
+        """Create new Alice session."""
         return Session(self, user_id, interfaces, locale, timezone, client_id, command)
 
 
 class Session:
-    """
-    Alice session
-    """
+    """Alice session."""
+
     def __init__(self, skill, user_id, interfaces, locale, timezone, client_id, command=""):
+        """New Alice session."""
         self.skill = skill
         self.messages = {}
         self.buttons = []
@@ -86,9 +80,7 @@ class Session:
         self.skill.sessions["current_id"] += 1
 
     def send_button(self, index):
-        """
-        Alice user press button in the skill chat
-        """
+        """Alice user press button in the skill chat."""
         button = self.buttons[index]
         req = {
           "nlu": {"entities": [], "tokens": []},
@@ -103,9 +95,7 @@ class Session:
         self.send_request(req, "[{}]".format(button["title"]))
 
     def send(self, text, command="", nlu=None):
-        """
-        Alice user send text to skill
-        """
+        """Alice user send text to skill."""
         if not nlu:
             nlu = {"entities": [], "tokens": []}
 
@@ -118,9 +108,7 @@ class Session:
         self.send_request(req, text)
 
     def send_request(self, req, text, follow=True):
-        """
-        internal send function
-        """
+        """Internal send function."""
         data = json.dumps({
           "meta": self.meta,
           "version": self.version,
@@ -146,15 +134,11 @@ class Session:
         self.session["message_id"] += 1
 
     def clear(self):
-        """
-        Clear the chat history
-        """
+        """Clear the chat history."""
         self.messages = {}
 
     def dump(self, tail=5):
-        """
-        Print tail of the session history, order by message dates
-        """
+        """Print tail of the session history, order by message dates."""
         suff = ''
         if len(self.messages) > tail:
             suff = 'Latest {}\n\n'.format(tail)
@@ -170,9 +154,7 @@ class Session:
         return ''.join(lines)
 
     def contain(self, substring, tail=5):
-        """
-        Check for presence of the substring in tail of chat history
-        """
+        """Check for presence of the substring in tail of chat history."""
         for message_id in sorted(self.messages)[-tail:]:
             req, res = self.messages[message_id]
             if (substring in req) or (substring in res):
