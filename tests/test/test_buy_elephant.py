@@ -8,7 +8,8 @@ import unittest
 class TestElephant(unittest.TestCase):
     """Module buy-elephant.py."""
 
-    def test_app(self):
+    @staticmethod
+    def test_app():
         """Test flask app."""
         from tests.buy_elephant import app
         from tester_alice_skill_flask import Interface, Skill
