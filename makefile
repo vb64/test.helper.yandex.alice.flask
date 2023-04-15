@@ -24,27 +24,27 @@ all: tests
 
 flake8:
 	$(FLAKE8) $(SOURCE)
-#	$(FLAKE8) $(TESTS)/test
+	$(FLAKE8) $(TESTS)/test
 
 lint:
-#	$(PYLINT) $(TESTS)/test
+	$(PYLINT) $(TESTS)/test
 	$(PYLINT) $(SOURCE)
 
 lint2:
-#	$(PYLINT2) $(TESTS)/test
+	$(PYLINT2) $(TESTS)/test
 	$(PYLINT2) $(SOURCE)
 
 pep257:
-#	$(PEP257) --match='.*\.py' $(TESTS)/test
+	$(PEP257) --match='.*\.py' $(TESTS)/test
 	$(PEP257) $(SOURCE)
 
 tests2: flake8 pep257 lint2
-#	$(PYTEST) --durations=5 $(TESTS)
-#	$(COVERAGE) html --skip-covered
+	$(PYTEST) --durations=5 $(TESTS)
+	$(COVERAGE) html --skip-covered
 
 tests: flake8 pep257 lint
-#	$(PYTEST) --durations=5 $(TESTS)
-#	$(COVERAGE) html --skip-covered
+	$(PYTEST) --durations=5 $(TESTS)
+	$(COVERAGE) html --skip-covered
 
 package:
 	$(PYTHON) -m build -n

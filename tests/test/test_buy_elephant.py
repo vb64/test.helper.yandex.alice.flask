@@ -1,21 +1,16 @@
 # coding: utf-8
-"""
-Tests with buy-elephant.py module
-"""
+"""Tests with buy-elephant.py module."""
 import os
 import sys
 import unittest
 
 
 class TestElephant(unittest.TestCase):
-    """
-    buy-elephant.py
-    """
+    """Module buy-elephant.py."""
+
     def test_app(self):
-        """
-        testin flask app
-        """
-        from buy_elephant import app
+        """Test flask app."""
+        from tests.buy_elephant import app
         from tester_alice_skill_flask import Interface, Skill
 
         skill = Skill(app, 'xxx-yyy-zzz', '/')
