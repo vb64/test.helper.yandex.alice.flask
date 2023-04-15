@@ -1,0 +1,2 @@
+recursive-include tester_flask *
+global-exclude *.py[cod]

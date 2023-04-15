@@ -1,45 +1,78 @@
-.PHONY: all setup flake8 lint
+.PHONY: all lint flake8 tests setup
 
 ifeq ($(OS),Windows_NT)
-PYTHON = venv\Scripts\python.exe
+PYTHON = venv/Scripts/python.exe
+COVERAGE = venv/Scripts/coverage.exe
+PTEST = venv/Scripts/pytest.exe
 else
 PYTHON = ./venv/bin/python
+COVERAGE = ./venv/bin/coverage
+PTEST = ./venv/bin/pytest
 endif
 
 SOURCE = tester_alice_skill_flask
-COVERAGE = $(PYTHON) -m coverage
+TESTS = tests
+
+PYLINT = $(PYTHON) -m pylint
+PYLINT2 = $(PYLINT) --rcfile .pylintrc2
+FLAKE8 = $(PYTHON) -m flake8
+PEP257 = $(PYTHON) -m pep257
+PYTEST = $(PTEST) --cov=$(SOURCE) --cov-report term:skip-covered
+PIP = $(PYTHON) -m pip install
 
 all: tests
 
 flake8:
-	$(PYTHON) -m flake8 --max-line-length=110 $(SOURCE)
+	$(FLAKE8) $(SOURCE)
+	$(FLAKE8) $(TESTS)/test
 
 lint:
-	$(PYTHON) -m pylint $(SOURCE)
+	$(PYLINT) $(TESTS)/test
+	$(PYLINT) $(SOURCE)
 
-coverage:
-	$(COVERAGE) run tests/test_buy_elephant.py
+lint2:
+	$(PYLINT2) $(TESTS)/test
+	$(PYLINT2) $(SOURCE)
 
-html:
-	$(COVERAGE) html --skip-covered
+pep257:
+	$(PEP257) --match='.*\.py' $(TESTS)/test
+	$(PEP257) $(SOURCE)
 
-tests: flake8 lint coverage html
-	$(COVERAGE) report --skip-covered
+tests2: flake8 pep257 lint2
+#	$(PYTEST) --durations=5 $(TESTS)
+#	$(COVERAGE) html --skip-covered
 
-dist:
-	$(PYTHON) setup.py sdist bdist_wheel
+tests: flake8 pep257 lint
+#	$(PYTEST) --durations=5 $(TESTS)
+#	$(COVERAGE) html --skip-covered
 
-upload_piptest: tests dist
-	$(PYTHON) -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+package:
+	$(PYTHON) -m build -n
 
-upload_pip: tests dist
-	$(PYTHON) -m twine upload dist/*
+pypitest: package
+	$(PYTHON) -m twine upload --config-file .pypirc --repository testpypi dist/*
+
+pypi: package
+	$(PYTHON) -m twine upload --config-file .pypirc dist/*
 
 setup: setup_python setup_pip
 
+setup2: setup_python2 setup_pip2
+
 setup_pip:
-	$(PYTHON) -m pip install -r requirements.txt
-	$(PYTHON) -m pip install -r tests/requirements.txt
+	$(PIP) --upgrade pip
+	$(PIP) -r requirements.txt
+	$(PIP) -r deploy.txt
+	$(PIP) -r $(TESTS)/requirements.txt
+
+setup_pip2:
+	$(PIP) --upgrade pip
+	$(PIP) -r requirements2.txt
+	$(PIP) -r $(TESTS)/requirements.txt
 
 setup_python:
-	python -m virtualenv venv
+	$(PYTHON_BIN) -m venv ./venv
+
+setup_python2:
+	$(PYTHON_BIN) -m pip install virtualenv
+	$(PYTHON_BIN) -m virtualenv ./venv
