@@ -14,15 +14,15 @@ class TestElephant(unittest.TestCase):
         from tester_alice_skill_flask import Interface, Skill
 
         skill = Skill(app, 'xxx-yyy-zzz', '/')
-        self.assertTrue(skill)
+        assert skill
 
         session = skill.new_session('1234567890', [Interface.Screen])
-        self.assertTrue(session.contain("Купи слона!"))
-        self.assertEqual(len(session.buttons), 2)
+        assert session.contain("Купи слона!")
+        assert len(session.buttons) == 2
 
         session.send_button(0)
-        self.assertTrue(session.contain("Все говорят"))
-        self.assertEqual(len(session.buttons), 2)
+        assert session.contain("Все говорят")
+        assert len(session.buttons) == 2
 
         session.send(
           "я завтра обдумаю этот вопрос на улице льва толстого, 16",
@@ -76,16 +76,14 @@ class TestElephant(unittest.TestCase):
             ]
           }
         )
-        self.assertTrue(session.contain("Все говорят"))
-
+        assert session.contain("Все говорят")
         print(session.dump())
         print(session.dump(tail=1))
 
         session.clear()
         session.send_button(1)
-        self.assertTrue(session.contain("Слона можно найти на Яндекс.Маркете!"))
-        self.assertFalse(session.contain("Все говорят"))
-
+        assert session.contain("Слона можно найти на Яндекс.Маркете!")
+        assert not session.contain("Все говорят")
         print(session.dump(tail=1))
 
 

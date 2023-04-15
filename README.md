@@ -1,11 +1,11 @@
-# test.helper.yandex.alice.flask
+# Класс для автотестов навыка ЯндексАлисы
 
 Класс python для автоматического тестирования навыка Яндекс Алиса, реализованного на python/flask.
 Пример [использования в юнит-тестах](https://github.com/vb64/test.helper.yandex.alice.flask/blob/master/tests/test_buy_elephant.py).
 
 Установка:
-```
-$ pip install tester_alice_skill_flask
+```bash
+pip install tester_alice_skill_flask
 ```
 
 Использование:
@@ -33,18 +33,15 @@ session = skill.new_session(
 )
 
 # история диалога содержит подстроку
-session.contain("Купи слона!")
-True
+assert session.contain("Купи слона!")
 
 # диалог содержит две кнопки
-len(session.buttons)
-2
+assert len(session.buttons) == 2
 
 # нажать первую кнопку
 session.send_button(0)
 
-session.contain("Все говорят")
-True
+assert session.contain("Все говорят")
 
 # послать текст
 session.send("Отстань!", command="", nlu={"entities": [], "tokens": []})
@@ -69,10 +66,7 @@ session.clear()
 # купить слона
 session.send("ладно")
 
-session.contain("Слона можно найти на Яндекс.Маркете!")
-True
-
-session.contain("Все говорят")
-False
+assert session.contain("Слона можно найти на Яндекс.Маркете!")
+assert not session.contain("Все говорят")
 
 ```
