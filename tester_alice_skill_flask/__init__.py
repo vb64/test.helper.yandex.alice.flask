@@ -18,6 +18,7 @@ class Surface:
 
 class Interface:
     """Available Alice interfaces."""
+
     Screen = "screen"
 
 
@@ -37,7 +38,6 @@ class Skill:
         self.is_screen_need = is_screen_need
 
     def new_session(
-        """New Alice session with this skill."""
       self,
       user_id,
       interfaces,
