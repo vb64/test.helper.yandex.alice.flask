@@ -2,7 +2,7 @@
 import sys
 import json
 
-if sys.version_info < (3, 0):
+if sys.version_info < (3, 0):  # pragma: no cover
     reload(sys)  # noqa: F821 pylint: disable=undefined-variable
     sys.setdefaultencoding('utf-8')  # pylint: disable=no-member
 
