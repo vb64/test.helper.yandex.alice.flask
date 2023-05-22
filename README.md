@@ -7,7 +7,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/936dcebe15214c6baded2a7470d520e3)](https://app.codacy.com/gh/vb64/test.helper.yandex.alice.flask/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 
 Класс python для автоматического тестирования навыка Яндекс Алиса, реализованного на python/flask.
-Пример [использования в юнит-тестах](tests/test_buy_elephant.py).
 
 Установка:
 ```bash
