@@ -54,7 +54,7 @@ class Session:
     """Alice session."""
 
     def __init__(self, skill, user_id, interfaces, locale, timezone, client_id, command=""):
-        """New Alice session."""
+        """Make new Alice session."""
         self.skill = skill
         self.messages = {}
         self.buttons = []
@@ -108,7 +108,7 @@ class Session:
         self.send_request(req, text)
 
     def send_request(self, req, text, follow=True):
-        """Internal send function."""
+        """Call internal send function."""
         data = json.dumps({
           "meta": self.meta,
           "version": self.version,

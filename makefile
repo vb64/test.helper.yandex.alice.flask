@@ -16,7 +16,7 @@ TESTS = tests
 PYLINT = $(PYTHON) -m pylint
 PYLINT2 = $(PYLINT) --rcfile .pylintrc2
 FLAKE8 = $(PYTHON) -m flake8
-PEP257 = $(PYTHON) -m pep257
+PEP257 = $(PYTHON) -m pydocstyle
 PYTEST = $(PTEST) --cov=$(SOURCE) --cov-report term:skip-covered
 PIP = $(PYTHON) -m pip install
 
