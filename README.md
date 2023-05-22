@@ -2,12 +2,12 @@
 
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/vb64/test.helper.yandex.alice.flask/pep257.yml?label=Pep257&style=plastic&branch=master)](https://github.com/vb64/test.helper.yandex.alice.flask/actions?query=workflow%3Apep257)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/vb64/test.helper.yandex.alice.flask/py2.yml?label=Python%202.7&style=plastic&branch=master)](https://github.com/vb64/test.helper.yandex.alice.flask/actions?query=workflow%3Apy2)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/vb64/test.helper.yandex.alice.flask/py3.yml?label=Python%203.7-3.10&style=plastic&branch=master)](https://github.com/vb64/test.helper.yandex.alice.flask/actions?query=workflow%3Apy3)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/vb64/test.helper.yandex.alice.flask/py3.yml?label=Python%203.7-3.11&style=plastic&branch=master)](https://github.com/vb64/test.helper.yandex.alice.flask/actions?query=workflow%3Apy3)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/936dcebe15214c6baded2a7470d520e3)](https://app.codacy.com/gh/vb64/test.helper.yandex.alice.flask/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/936dcebe15214c6baded2a7470d520e3)](https://app.codacy.com/gh/vb64/test.helper.yandex.alice.flask/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 
 Класс python для автоматического тестирования навыка Яндекс Алиса, реализованного на python/flask.
-Пример [использования в юнит-тестах](https://github.com/vb64/test.helper.yandex.alice.flask/blob/master/tests/test_buy_elephant.py).
+Пример [использования в юнит-тестах](tests/test_buy_elephant.py).
 
 Установка:
 ```bash
